@@ -12,6 +12,7 @@ export class NewTaskComponent {
   private formEl = viewChild<ElementRef<HTMLFormElement>>('form');
 
   onAddTask(title: string, description: string) {
+    console.log('hello')
     this.formEl()?.nativeElement.reset();
   }
 }
