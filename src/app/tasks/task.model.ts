@@ -1,10 +1,16 @@
+import {InjectionToken, Provider} from '@angular/core';
+
 export type TaskStatus = 'OPEN' | 'IN_PROGRESS' | 'DONE';
 
-export const TaskStatusOptions: {
+type TaskStatusOptionsType = {
   value: 'open' | 'in-progress' | 'done',
   taskStatus: TaskStatus,
   text: string
-}[] = [
+}[]
+
+export const TASK_STATUS_OPTIONS = new InjectionToken<TaskStatusOptionsType>('task-status-options')
+
+export const TaskStatusOptions: TaskStatusOptionsType = [
   {
     value: 'open',
     taskStatus: 'OPEN',
@@ -20,7 +26,12 @@ export const TaskStatusOptions: {
     taskStatus: 'DONE',
     text: 'Completed'
   }
-]
+];
+
+export const taskStatusOptionsProvider: Provider = {
+  provide: TASK_STATUS_OPTIONS,
+  useValue: TaskStatusOptions
+}
 
 export interface Task {
   id: string;
